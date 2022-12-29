@@ -4,7 +4,8 @@
     <application
         android:allowBackup="false"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:name=".BuddiesApp">
         <activity
             android:name=".core.MainActivity"
             android:exported="true">

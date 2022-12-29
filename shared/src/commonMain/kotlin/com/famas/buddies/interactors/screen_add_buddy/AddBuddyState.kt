@@ -3,7 +3,9 @@ package com.famas.buddies.interactors.screen_add_buddy
 data class AddBuddyState(
     val loading: Boolean = false,
     val files: List<BuddyFile> = emptyList(),
-    val name: String,
+    val note: String = "",
+    val name: String = "",
+    val showMap: Boolean = false
 )
 
 sealed class BuddyFile(

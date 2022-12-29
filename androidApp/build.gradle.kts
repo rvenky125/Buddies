@@ -2,6 +2,7 @@ plugins {
     id("com.android.application")
     kotlin("android")
     kotlin("plugin.serialization") version Deps.kotlinVersion
+    id("com.google.devtools.ksp") version " 1.7.21-1.0.8"
 }
 
 android {
@@ -48,4 +49,7 @@ dependencies {
     implementation(Accompanist.placeholder)
     implementation(Accompanist.flowLayout)
     implementation(Accompanist.permissions)
+
+    implementation(Deps.mokoMvvmFlow)
+    implementation(Deps.koinCompose)
 }
