@@ -1,6 +1,6 @@
 package com.famas.buddies.feature_select_map.interactors
 
-import com.famas.buddies.feature_add_buddy.interactors.AddBuddyEvent
+import com.famas.buddies.feature_select_map.domain.model.PlaceToShow
 import com.famas.buddies.feature_select_map.domain.repository.MapRepository
 import dev.icerock.moko.mvvm.flow.CStateFlow
 import dev.icerock.moko.mvvm.flow.cStateFlow
@@ -10,33 +10,40 @@ import kotlinx.coroutines.launch
 
 class SelectLocationVM(
     private val mapRepository: MapRepository
-): ViewModel() {
+) : ViewModel() {
     private val _state = MutableStateFlow(SelectLocationState())
     val state: CStateFlow<SelectLocationState> = _state.cStateFlow()
-
 
     fun onEvent(event: SelectLocationEvent) {
         when (event) {
             is SelectLocationEvent.SetLoading -> {
                 _state.value = state.value.copy(loading = event.isLoading)
             }
-
-        }
-    }
-
-    fun fetchForLocation() {
-        viewModelScope.launch {
-            print("get place called" )
-            val result = mapRepository.getPlace(17.90829064445241, 83.1857109491208)
-            print(result.data)
-        }
-    }
-
-    init {
-        viewModelScope.launch {
-            print("get place called" )
-            val result = mapRepository.getPlace(17.90829064445241, 83.1857109491208)
-            print(result.data)
+            is SelectLocationEvent.OnChangeLocation -> {
+                viewModelScope.launch {
+                    val result = mapRepository.getPlace(event.lat, event.lng)
+                    _state.value = state.value.copy(
+                        placeToShow = result.data ?: PlaceToShow("${result.message}", "")
+                    )
+                }
+            }
+            is SelectLocationEvent.OnQueryChange -> {
+                _state.value = state.value.copy(queryValue = event.query)
+                viewModelScope.launch {
+                    val result = mapRepository.findPlaceFromQuery(event.query)
+                    _state.value = state.value.copy(
+                        places = result.data ?: emptyList()
+                    )
+                }
+            }
+            is SelectLocationEvent.OnSelectPlace -> {
+                val selectedPlace = state.value.places[event.placeIndex ?: return]
+                _state.value =
+                    state.value.copy(
+                        selectedPlace = selectedPlace,
+                        queryValue = selectedPlace.formattedAddress
+                    )
+            }
         }
     }
 }

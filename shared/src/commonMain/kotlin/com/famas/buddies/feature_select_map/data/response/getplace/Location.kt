@@ -1,4 +1,4 @@
-package com.famas.buddies.feature_select_map.data.response
+package com.famas.buddies.feature_select_map.data.response.getplace
 
 
 import kotlinx.serialization.SerialName

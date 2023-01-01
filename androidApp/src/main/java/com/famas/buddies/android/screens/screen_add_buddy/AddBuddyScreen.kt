@@ -18,7 +18,7 @@ import org.koin.androidx.compose.getViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-@Destination(style = DestinationStyle.BottomSheet::class)
+@Destination(style = DestinationStyle.BottomSheet::class, route = "Add Buddy")
 fun AddBuddyScreen(modifier: Modifier = Modifier) {
     val screenSize = getScreenSize()
     val viewModel: AddBuddyVM = getViewModel()
@@ -26,7 +26,6 @@ fun AddBuddyScreen(modifier: Modifier = Modifier) {
 
     Column(
         modifier = modifier
-            .fillMaxSize()
             .padding(SpaceMedium)
     ) {
         AddFilesLt(
@@ -35,14 +34,6 @@ fun AddBuddyScreen(modifier: Modifier = Modifier) {
             onRemoveFile = { viewModel.onEvent(AddBuddyEvent.OnRemoveFile(it)) })
 
         Spacer(modifier = Modifier.height(SpaceLarge))
-
-//        MapCard(
-//            mapVisible = state.showMap,
-//            setMapVisible = { viewModel.onEvent(AddBuddyEvent.OnChangeShowMap(it)) },
-//            onSelectLocation = {
-//
-//            }
-//        )
 
         Spacer(modifier = Modifier.height(SpaceLarge))
         Text(

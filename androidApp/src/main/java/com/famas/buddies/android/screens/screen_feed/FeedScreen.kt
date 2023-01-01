@@ -15,7 +15,7 @@ import com.ramcosta.composedestinations.navigation.navigate
 import com.ramcosta.composedestinations.spec.DestinationStyle
 
 @Composable
-@Destination(start = true)
+@Destination(start = true, route = "Buddies")
 fun FeedScreen(
     navController: NavController
 ) {

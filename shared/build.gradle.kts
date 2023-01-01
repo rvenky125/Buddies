@@ -37,6 +37,7 @@ kotlin {
                 implementation(Deps.ktorSerializationJson)
                 api(Deps.mokoMvvmCore)
                 api(Deps.mokoMvvmFlow)
+                implementation(Deps.ktorLogging)
             }
         }
         val commonTest by getting {

@@ -1,11 +1,11 @@
-package com.famas.buddies.feature_select_map.data.response
+package com.famas.buddies.feature_select_map.data.response.findplace
 
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class Northeast(
+data class Southwest(
     @SerialName("lat")
     val lat: Double,
     @SerialName("lng")
