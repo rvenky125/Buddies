@@ -1,10 +1,10 @@
-package com.famas.buddies.interactors.screen_add_buddy
+package com.famas.buddies.feature_add_buddy.interactors
 
+import com.famas.buddies.feature_select_map.interactors.SelectLocationState
 import dev.icerock.moko.mvvm.flow.CStateFlow
 import dev.icerock.moko.mvvm.flow.cStateFlow
 import dev.icerock.moko.mvvm.viewmodel.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
 
 class AddBuddyVM : ViewModel() {
     private val _state = MutableStateFlow(AddBuddyState())

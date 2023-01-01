@@ -1,4 +1,4 @@
-package com.famas.buddies.interactors.screen_add_buddy
+package com.famas.buddies.feature_add_buddy.interactors
 
 sealed class AddBuddyEvent {
     data class SetLoading(val isLoading: Boolean): AddBuddyEvent()

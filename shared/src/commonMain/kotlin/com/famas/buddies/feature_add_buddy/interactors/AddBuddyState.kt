@@ -1,4 +1,5 @@
-package com.famas.buddies.interactors.screen_add_buddy
+package com.famas.buddies.feature_add_buddy.interactors
+
 
 data class AddBuddyState(
     val loading: Boolean = false,

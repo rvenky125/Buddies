@@ -2,10 +2,17 @@ plugins {
     id("com.android.application")
     kotlin("android")
     kotlin("plugin.serialization") version Deps.kotlinVersion
-    id("com.google.devtools.ksp") version " 1.7.21-1.0.8"
+    id("com.google.devtools.ksp") version "1.7.20-1.0.8"
 }
 
 android {
+    applicationVariants.all {
+        kotlin.sourceSets {
+            getByName(name) {
+                kotlin.srcDir("build/generated/ksp/$name/kotlin")
+            }
+        }
+    }
     namespace = "com.famas.buddies.android"
     compileSdk = 33
     defaultConfig {
@@ -19,7 +26,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.3.0"
+        kotlinCompilerExtensionVersion = "${Deps.composeVersion}"
     }
     packagingOptions {
         resources {
@@ -38,7 +45,6 @@ dependencies {
     implementation(Deps.composeUi)
     implementation(Deps.composeUiTooling)
     implementation(Deps.composeUiToolingPreview)
-    implementation(Deps.composeFoundation)
     implementation(Deps.composeMaterial)
     implementation(Deps.composeSizeClass)
     implementation(Deps.activityCompose)
@@ -52,4 +58,10 @@ dependencies {
 
     implementation(Deps.mokoMvvmFlow)
     implementation(Deps.koinCompose)
+
+    implementation(Destinations.animations_core)
+    ksp(Destinations.ksp)
+
+    implementation(Maps.mapsCompose)
+    implementation(Maps.playServicesMaps)
 }

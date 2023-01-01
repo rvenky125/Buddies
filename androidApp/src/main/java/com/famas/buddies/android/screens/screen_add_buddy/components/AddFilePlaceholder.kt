@@ -21,7 +21,7 @@ import com.famas.buddies.android.core.theme.SpaceMedium
 import com.famas.buddies.android.core.theme.SpaceSmall
 import com.famas.buddies.android.core.theme.SpaceVerySmall
 import com.famas.buddies.android.util.getScreenSize
-import com.famas.buddies.interactors.screen_add_buddy.BuddyFile
+import com.famas.buddies.feature_add_buddy.interactors.BuddyFile
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

@@ -1,14 +1,16 @@
 package com.famas.buddies.di
 
-import com.famas.buddies.interactors.screen_add_buddy.AddBuddyVM
-import org.koin.core.Koin
-import org.koin.core.component.KoinComponent
-import org.koin.core.component.get
+import com.famas.buddies.feature_add_buddy.interactors.AddBuddyVM
+import com.famas.buddies.feature_select_map.interactors.SelectLocationVM
 import org.koin.dsl.module
 
 actual val platformModule = module {
     factory {
         AddBuddyVM()
+    }
+
+    factory {
+        SelectLocationVM(get())
     }
 }
 

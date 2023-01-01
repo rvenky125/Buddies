@@ -1,9 +1,9 @@
 plugins {
     //trick: for the same plugin versions in all sub-modules
-    id("com.android.application").version("7.4.0-rc01").apply(false)
-    id("com.android.library").version("7.4.0-rc01").apply(false)
-    kotlin("android").version("1.7.10").apply(false)
-    kotlin("multiplatform").version("1.7.10").apply(false)
+    id("com.android.application").version(Deps.gradleVersion).apply(false)
+    id("com.android.library").version(Deps.gradleVersion).apply(false)
+    kotlin("android").version(Deps.kotlinVersion).apply(false)
+    kotlin("multiplatform").version(Deps.kotlinVersion).apply(false)
 
     //Add this for realmDB
     id("io.realm.kotlin").version("1.3.0").apply(false)

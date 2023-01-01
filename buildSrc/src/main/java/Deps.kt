@@ -3,12 +3,12 @@ object Deps {
     private const val activityComposeVersion = "1.6.1"
     const val activityCompose = "androidx.activity:activity-compose:$activityComposeVersion"
 
-    const val composeVersion = "1.4.0-alpha02"
+    const val composeVersion = "1.3.2"
     const val composeUi = "androidx.compose.ui:ui:$composeVersion"
     const val composeUiTooling = "androidx.compose.ui:ui-tooling:$composeVersion"
     const val composeUiToolingPreview = "androidx.compose.ui:ui-tooling-preview:$composeVersion"
-    const val composeFoundation = "androidx.compose.foundation:foundation:$composeVersion"
-    const val composeIconsExtended = "androidx.compose.material:material-icons-extended:$composeVersion"
+    const val materialIconsExtended = "1.3.1"
+    const val composeIconsExtended = "androidx.compose.material:material-icons-extended:$materialIconsExtended"
 
     //Material 3
     const val material3Version = "1.0.1"
@@ -34,10 +34,10 @@ object Deps {
     const val ktorIOS = "io.ktor:ktor-client-ios:$ktorVersion"
 
     // GRADLE PLUGINS
-    const val kotlinVersion = "1.7.21"
+    const val kotlinVersion = "1.7.20"
     const val kotlinGradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
 
-    private const val gradleVersion = "7.2.2"
+    const val gradleVersion = "7.3.0"
     const val androidBuildTools = "com.android.tools.build:gradle:$gradleVersion"
 
     // TESTING

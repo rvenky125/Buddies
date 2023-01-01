@@ -9,14 +9,16 @@ import androidx.compose.ui.Modifier
 import com.famas.buddies.android.core.theme.SpaceLarge
 import com.famas.buddies.android.core.theme.SpaceMedium
 import com.famas.buddies.android.screens.screen_add_buddy.components.AddFilesLt
-import com.famas.buddies.android.screens.screen_add_buddy.components.MapCard
 import com.famas.buddies.android.util.getScreenSize
-import com.famas.buddies.interactors.screen_add_buddy.AddBuddyEvent
-import com.famas.buddies.interactors.screen_add_buddy.AddBuddyVM
+import com.famas.buddies.feature_add_buddy.interactors.AddBuddyEvent
+import com.famas.buddies.feature_add_buddy.interactors.AddBuddyVM
+import com.ramcosta.composedestinations.annotation.Destination
+import com.ramcosta.composedestinations.spec.DestinationStyle
 import org.koin.androidx.compose.getViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
+@Destination(style = DestinationStyle.BottomSheet::class)
 fun AddBuddyScreen(modifier: Modifier = Modifier) {
     val screenSize = getScreenSize()
     val viewModel: AddBuddyVM = getViewModel()
@@ -34,13 +36,13 @@ fun AddBuddyScreen(modifier: Modifier = Modifier) {
 
         Spacer(modifier = Modifier.height(SpaceLarge))
 
-        MapCard(
-            mapVisible = state.showMap,
-            setMapVisible = { viewModel.onEvent(AddBuddyEvent.OnChangeShowMap(it)) },
-            onSelectLocation = {
-
-            }
-        )
+//        MapCard(
+//            mapVisible = state.showMap,
+//            setMapVisible = { viewModel.onEvent(AddBuddyEvent.OnChangeShowMap(it)) },
+//            onSelectLocation = {
+//
+//            }
+//        )
 
         Spacer(modifier = Modifier.height(SpaceLarge))
         Text(
