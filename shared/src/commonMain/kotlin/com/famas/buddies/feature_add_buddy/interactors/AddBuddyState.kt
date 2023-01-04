@@ -16,12 +16,12 @@ sealed class BuddyFile(
     class Image(
         label: String = "",
         uri: String = ""
-    ): BuddyFile(label, uri)
+    ) : BuddyFile(label, uri)
 
     class Video(
         label: String = "",
         uri: String = ""
-    ): BuddyFile(label, uri)
+    ) : BuddyFile(label, uri)
 }
 
 

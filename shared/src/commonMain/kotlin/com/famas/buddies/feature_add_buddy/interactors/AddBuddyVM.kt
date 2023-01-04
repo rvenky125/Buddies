@@ -1,15 +1,31 @@
 package com.famas.buddies.feature_add_buddy.interactors
 
-import com.famas.buddies.feature_select_map.interactors.SelectLocationState
+import com.famas.buddies.feature_add_buddy.data.request.BuddyDto
+import com.famas.buddies.feature_add_buddy.domain.repository.AddBuddyRepository
+import com.famas.buddies.feature_select_map.domain.model.LocationModel
+import com.famas.buddies.util.Response
+import com.famas.buddies.util.UiEvent
+import dev.icerock.moko.mvvm.flow.CFlow
 import dev.icerock.moko.mvvm.flow.CStateFlow
+import dev.icerock.moko.mvvm.flow.cFlow
 import dev.icerock.moko.mvvm.flow.cStateFlow
 import dev.icerock.moko.mvvm.viewmodel.ViewModel
+import io.ktor.util.date.*
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asSharedFlow
+import kotlinx.coroutines.launch
 
-class AddBuddyVM : ViewModel() {
+class AddBuddyVM(
+    private val addBuddyRepository: AddBuddyRepository,
+) : ViewModel() {
     private val _state = MutableStateFlow(AddBuddyState())
     val state: CStateFlow<AddBuddyState> = _state.cStateFlow()
 
+    private val _uiEvent = MutableSharedFlow<UiEvent>()
+    val uiEvent: CFlow<UiEvent> = _uiEvent.asSharedFlow().cFlow()
+
+    private var location: LocationModel? = null
 
     fun onEvent(event: AddBuddyEvent) {
         when (event) {
@@ -31,6 +47,42 @@ class AddBuddyVM : ViewModel() {
             }
             is AddBuddyEvent.OnChangeShowMap -> {
                 _state.value = state.value.copy(showMap = event.show)
+            }
+            AddBuddyEvent.OnSubmit -> {
+                onSubmit()
+            }
+        }
+    }
+
+
+    private fun onSubmit() {
+        if (location == null || _state.value.files.isEmpty() || _state.value.name.isEmpty()) {
+            //TODO Need to show message from here
+            return
+        }
+
+        viewModelScope.launch {
+            _state.value = state.value.copy(loading = true)
+            val response = addBuddyRepository.addBuddy(
+                BuddyDto(
+                    name = _state.value.name,
+                    lat = location?.longitude!!,
+                    lng = location?.longitude!!,
+                    note = _state.value.note,
+                    files = _state.value.files.map { it.uri },
+                    createdDateTimestamp = GMTDate().timestamp
+                )
+            )
+            _state.value = state.value.copy(loading = false)
+
+            when (response) {
+                is Response.Success -> {
+                    _uiEvent.emit(UiEvent.ShowMessage("Buddy added successfully"))
+                    _uiEvent.emit(UiEvent.GoBack)
+                }
+                is Response.Failure -> {
+                    _uiEvent.emit(UiEvent.ShowMessage("Failed to add buddy"))
+                }
             }
         }
     }

@@ -1,6 +1,5 @@
 package com.famas.buddies.android.components
 
-import android.widget.AutoCompleteTextView
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.animation.core.animateFloatAsState
@@ -26,7 +25,9 @@ import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.unit.*
+import androidx.compose.ui.unit.IntOffset
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.toSize
 import androidx.compose.ui.window.Popup
 import com.famas.buddies.android.util.toDp
 import kotlinx.coroutines.launch

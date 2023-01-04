@@ -6,7 +6,7 @@ import org.koin.dsl.module
 
 actual val platformModule = module {
     factory {
-        AddBuddyVM()
+        AddBuddyVM(get())
     }
 
     factory {

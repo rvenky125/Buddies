@@ -5,7 +5,6 @@ import com.famas.buddies.feature_select_map.data.response.getplace.PlaceResponse
 import io.ktor.client.*
 import io.ktor.client.call.*
 import io.ktor.client.request.*
-import io.ktor.http.*
 
 class MapApiImpl(private val client: HttpClient) : MapApi {
     override suspend fun getPlace(lat: Double, lng: Double): PlaceResponse {

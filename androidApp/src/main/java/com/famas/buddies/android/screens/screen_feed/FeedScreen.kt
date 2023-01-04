@@ -8,11 +8,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
-import com.famas.buddies.android.screens.destinations.AddBuddyScreenDestination
 import com.famas.buddies.android.screens.destinations.SelectLocationScreenDestination
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.navigate
-import com.ramcosta.composedestinations.spec.DestinationStyle
 
 @Composable
 @Destination(start = true, route = "Buddies")

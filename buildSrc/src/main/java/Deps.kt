@@ -8,11 +8,13 @@ object Deps {
     const val composeUiTooling = "androidx.compose.ui:ui-tooling:$composeVersion"
     const val composeUiToolingPreview = "androidx.compose.ui:ui-tooling-preview:$composeVersion"
     const val materialIconsExtended = "1.3.1"
-    const val composeIconsExtended = "androidx.compose.material:material-icons-extended:$materialIconsExtended"
+    const val composeIconsExtended =
+        "androidx.compose.material:material-icons-extended:$materialIconsExtended"
 
     //Material 3
     const val material3Version = "1.0.1"
-    const val composeSizeClass = "androidx.compose.material3:material3-window-size-class:$material3Version"
+    const val composeSizeClass =
+        "androidx.compose.material3:material3-window-size-class:$material3Version"
     const val composeMaterial = "androidx.compose.material3:material3:$material3Version"
 
     private const val composeNavigationVersion = "2.5.3"
@@ -70,7 +72,8 @@ object Deps {
     const val mokoMvvmFlow = "dev.icerock.moko:mvvm-flow:$mokoMvvm"
 
     private const val coroutinesNativeMtVersion = "1.6.0-native-mt"
-    const val coroutinesNativeMt = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesNativeMtVersion"
+    const val coroutinesNativeMt =
+        "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesNativeMtVersion"
 
     //Realm
     private const val realm = "1.2.0"

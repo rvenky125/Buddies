@@ -8,5 +8,4 @@ fun initKoin() {
     }
 }
 
-
 fun getAllModules() = listOf(mainModule, platformModule)

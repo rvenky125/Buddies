@@ -25,7 +25,7 @@ kotlin {
             export(Deps.mokoMvvmFlow)
         }
     }
-    
+
     sourceSets {
         val commonMain by getting {
             dependencies {

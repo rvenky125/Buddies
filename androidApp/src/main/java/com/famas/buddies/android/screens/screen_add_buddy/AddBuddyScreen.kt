@@ -1,28 +1,57 @@
 package com.famas.buddies.android.screens.screen_add_buddy
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.window.Dialog
 import com.famas.buddies.android.core.theme.SpaceLarge
 import com.famas.buddies.android.core.theme.SpaceMedium
+import com.famas.buddies.android.screens.destinations.FeedScreenDestination
 import com.famas.buddies.android.screens.screen_add_buddy.components.AddFilesLt
 import com.famas.buddies.android.util.getScreenSize
 import com.famas.buddies.feature_add_buddy.interactors.AddBuddyEvent
 import com.famas.buddies.feature_add_buddy.interactors.AddBuddyVM
+import com.famas.buddies.util.UiEvent
 import com.ramcosta.composedestinations.annotation.Destination
+import com.ramcosta.composedestinations.navigation.DestinationsNavigator
+import com.ramcosta.composedestinations.navigation.popUpTo
 import com.ramcosta.composedestinations.spec.DestinationStyle
+import kotlinx.coroutines.flow.collectLatest
 import org.koin.androidx.compose.getViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 @Destination(style = DestinationStyle.BottomSheet::class, route = "Add Buddy")
-fun AddBuddyScreen(modifier: Modifier = Modifier) {
+fun AddBuddyScreen(modifier: Modifier = Modifier, snackbarHostState: SnackbarHostState, navigator: DestinationsNavigator) {
     val screenSize = getScreenSize()
     val viewModel: AddBuddyVM = getViewModel()
     val state = viewModel.state.collectAsState().value
+
+    LaunchedEffect(key1 = Unit, block = {
+        viewModel.uiEvent.collectLatest {
+            when (it) {
+                is UiEvent.ShowMessage -> {
+                    snackbarHostState.showSnackbar(it.message)
+                }
+                is UiEvent.Navigate -> {
+
+                }
+                UiEvent.GoBack -> {
+                    navigator.navigate(FeedScreenDestination) {
+                        popUpTo(FeedScreenDestination) {
+                            this.inclusive = false
+                        }
+                    }
+                }
+            }
+        }
+    })
 
     Column(
         modifier = modifier
@@ -41,13 +70,15 @@ fun AddBuddyScreen(modifier: Modifier = Modifier) {
             style = MaterialTheme.typography.titleMedium,
             modifier = Modifier.padding(top = SpaceMedium)
         )
-        OutlinedTextField(value = state.name, onValueChange = {
-            viewModel.onEvent(AddBuddyEvent.OnNameChange(it))
-        }, modifier = Modifier
-            .fillMaxWidth()
-            .padding(bottom = SpaceMedium), label = {
-            Text(text = "Buddy name \uD83D\uDC36")
-        })
+        OutlinedTextField(
+            value = state.name, onValueChange = {
+                viewModel.onEvent(AddBuddyEvent.OnNameChange(it))
+            }, modifier = Modifier
+                .fillMaxWidth()
+                .padding(bottom = SpaceMedium), label = {
+                Text(text = "Buddy name \uD83D\uDC36")
+            }, maxLines = 1, keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done)
+        )
         OutlinedTextField(
             value = state.note,
             onValueChange = {
@@ -55,8 +86,7 @@ fun AddBuddyScreen(modifier: Modifier = Modifier) {
             },
             maxLines = 5,
             modifier = Modifier
-                .fillMaxWidth()
-                .height(screenSize.height * 0.20f),
+                .fillMaxWidth(),
             label = {
                 Text(text = "Add Note if any")
             }
@@ -68,6 +98,12 @@ fun AddBuddyScreen(modifier: Modifier = Modifier) {
                 .padding(top = SpaceMedium)
         ) {
             Text(text = "Add Buddy")
+        }
+
+        if (state.loading) {
+            Dialog(onDismissRequest = { /*TODO*/ }) {
+                CircularProgressIndicator()
+            }
         }
     }
 }

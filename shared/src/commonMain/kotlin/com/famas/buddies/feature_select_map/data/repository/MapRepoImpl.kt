@@ -2,13 +2,9 @@ package com.famas.buddies.feature_select_map.data.repository
 
 import com.famas.buddies.feature_select_map.data.api.MapApi
 import com.famas.buddies.feature_select_map.data.response.findplace.Candidate
-import com.famas.buddies.feature_select_map.data.response.findplace.FindPlaceResponse
 import com.famas.buddies.feature_select_map.domain.model.PlaceToShow
 import com.famas.buddies.feature_select_map.domain.repository.MapRepository
 import com.famas.buddies.util.Response
-import io.ktor.client.*
-import io.ktor.client.call.*
-import io.ktor.client.request.*
 
 class MapRepoImpl(private val mapApi: MapApi) : MapRepository {
     override suspend fun getPlace(lat: Double, lng: Double): Response<PlaceToShow> {

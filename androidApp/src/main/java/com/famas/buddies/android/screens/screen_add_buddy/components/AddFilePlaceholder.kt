@@ -33,20 +33,6 @@ fun AddFilesLt(
 ) {
     val screenSize = getScreenSize()
 
-    val pictureLauncher = rememberLauncherForActivityResult(
-        contract = ActivityResultContracts.TakePicture(),
-        onResult = {
-            if (it) {
-
-            }
-        }
-    )
-
-    val videoLauncher = rememberLauncherForActivityResult(
-        contract = ActivityResultContracts.TakePicture(),
-        onResult = {}
-    )
-
     val launcher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.PickMultipleVisualMedia(),
     ) { list ->
@@ -78,7 +64,7 @@ fun AddFilesLt(
 
             item {
                 AddFilePlaceholder {
-                    launcher.launch(PickVisualMediaRequest())
+                    launcher.launch(PickVisualMediaRequest(mediaType = ActivityResultContracts.PickVisualMedia.ImageOnly))
                 }
             }
         }

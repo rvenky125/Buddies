@@ -1,12 +1,20 @@
 package com.famas.buddies.android
 
 import android.app.Application
-import com.famas.buddies.di.initKoin
+import com.famas.buddies.di.getAllModules
+import com.famas.buddies.di.initFirebase
+import org.koin.android.ext.koin.androidContext
+import org.koin.core.context.startKoin
 
-class BuddiesApp: Application() {
+class BuddiesApp : Application() {
     override fun onCreate() {
         super.onCreate()
 
-        initKoin()
+        initFirebase(applicationContext)
+
+        startKoin {
+            androidContext(applicationContext)
+            modules(getAllModules())
+        }
     }
 }

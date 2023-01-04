@@ -1,7 +1,10 @@
 package com.famas.buddies.feature_select_map.interactors
 
+import com.famas.buddies.feature_select_map.data.response.findplace.Candidate
 import com.famas.buddies.feature_select_map.domain.model.PlaceToShow
 import com.famas.buddies.feature_select_map.domain.repository.MapRepository
+import dev.gitlive.firebase.Firebase
+import dev.gitlive.firebase.firestore.firestore
 import dev.icerock.moko.mvvm.flow.CStateFlow
 import dev.icerock.moko.mvvm.flow.cStateFlow
 import dev.icerock.moko.mvvm.viewmodel.ViewModel
@@ -21,7 +24,11 @@ class SelectLocationVM(
             }
             is SelectLocationEvent.OnChangeLocation -> {
                 viewModelScope.launch {
-                    val result = mapRepository.getPlace(event.lat, event.lng)
+                    _state.value = state.value.copy(loading = true)
+                    val result =
+                        mapRepository.getPlace(event.location.latitude, event.location.longitude)
+                    _state.value = state.value.copy(loading = false)
+
                     _state.value = state.value.copy(
                         placeToShow = result.data ?: PlaceToShow("${result.message}", "")
                     )
@@ -37,11 +44,14 @@ class SelectLocationVM(
                 }
             }
             is SelectLocationEvent.OnSelectPlace -> {
-                val selectedPlace = state.value.places[event.placeIndex ?: return]
+                var selectedPlace: Candidate? = null
+                if (event.placeIndex != null) {
+                    selectedPlace = state.value.places[event.placeIndex]
+                }
                 _state.value =
                     state.value.copy(
                         selectedPlace = selectedPlace,
-                        queryValue = selectedPlace.formattedAddress
+                        queryValue = selectedPlace?.name ?: ""
                     )
             }
         }
