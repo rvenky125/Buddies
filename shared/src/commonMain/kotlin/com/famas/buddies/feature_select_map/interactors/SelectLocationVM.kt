@@ -3,8 +3,6 @@ package com.famas.buddies.feature_select_map.interactors
 import com.famas.buddies.feature_select_map.data.response.findplace.Candidate
 import com.famas.buddies.feature_select_map.domain.model.PlaceToShow
 import com.famas.buddies.feature_select_map.domain.repository.MapRepository
-import dev.gitlive.firebase.Firebase
-import dev.gitlive.firebase.firestore.firestore
 import dev.icerock.moko.mvvm.flow.CStateFlow
 import dev.icerock.moko.mvvm.flow.cStateFlow
 import dev.icerock.moko.mvvm.viewmodel.ViewModel
@@ -30,7 +28,7 @@ class SelectLocationVM(
                     _state.value = state.value.copy(loading = false)
 
                     _state.value = state.value.copy(
-                        placeToShow = result.data ?: PlaceToShow("${result.message}", "")
+                        placeToShow = result.data ?: PlaceToShow("${result.message}", "address")
                     )
                 }
             }
@@ -54,6 +52,7 @@ class SelectLocationVM(
                         queryValue = selectedPlace?.name ?: ""
                     )
             }
+            else -> {}
         }
     }
 }

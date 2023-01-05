@@ -1,0 +1,1 @@
+rootProject.name = "com.famas.api-buddies"

@@ -17,6 +17,7 @@ import com.famas.buddies.android.screens.screen_add_buddy.components.AddFilesLt
 import com.famas.buddies.android.util.getScreenSize
 import com.famas.buddies.feature_add_buddy.interactors.AddBuddyEvent
 import com.famas.buddies.feature_add_buddy.interactors.AddBuddyVM
+import com.famas.buddies.feature_select_map.domain.model.LocationModel
 import com.famas.buddies.util.UiEvent
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
@@ -27,13 +28,14 @@ import org.koin.androidx.compose.getViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-@Destination(style = DestinationStyle.BottomSheet::class, route = "Add Buddy")
-fun AddBuddyScreen(modifier: Modifier = Modifier, snackbarHostState: SnackbarHostState, navigator: DestinationsNavigator) {
+@Destination(style = DestinationStyle.BottomSheet::class, route = "Add Buddy", navArgsDelegate = LocationModel::class)
+fun AddBuddyScreen(pickedLocationModel: LocationModel, snackbarHostState: SnackbarHostState, navigator: DestinationsNavigator, modifier: Modifier = Modifier) {
     val screenSize = getScreenSize()
     val viewModel: AddBuddyVM = getViewModel()
     val state = viewModel.state.collectAsState().value
 
     LaunchedEffect(key1 = Unit, block = {
+        viewModel.setPickedLocation(pickedLocationModel)
         viewModel.uiEvent.collectLatest {
             when (it) {
                 is UiEvent.ShowMessage -> {
@@ -93,7 +95,7 @@ fun AddBuddyScreen(modifier: Modifier = Modifier, snackbarHostState: SnackbarHos
         )
 
         Button(
-            onClick = { /*TODO*/ }, modifier = Modifier
+            onClick = { viewModel.onEvent(AddBuddyEvent.OnSubmit) }, modifier = Modifier
                 .align(Alignment.End)
                 .padding(top = SpaceMedium)
         ) {

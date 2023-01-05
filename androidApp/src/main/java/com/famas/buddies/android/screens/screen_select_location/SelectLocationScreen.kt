@@ -32,7 +32,6 @@ import com.ramcosta.composedestinations.navigation.navigate
 import kotlinx.coroutines.delay
 import org.koin.androidx.compose.getViewModel
 
-@OptIn(ExperimentalMaterial3Api::class, ExperimentalAnimationApi::class)
 @Composable
 @Destination(route = "Pick Location")
 fun SelectLocationScreen(
@@ -44,16 +43,6 @@ fun SelectLocationScreen(
     val cameraPosition = rememberCameraPositionState()
 
     val state = viewModel.state.collectAsState().value
-
-    var isExpanded by remember {
-        mutableStateOf(false)
-    }
-
-    val mapProperties = remember {
-        MapProperties(isMyLocationEnabled = true)
-    }
-
-    val focusRequester = remember { FocusRequester() }
 
     LaunchedEffect(key1 = cameraPosition.position.target, block = {
         delay(500)
@@ -95,7 +84,14 @@ fun SelectLocationScreen(
                 Text(text = if (state.loading) "Loading..." else state.placeToShow.name)
                 Spacer(modifier = Modifier.height(SpaceMedium))
                 Button(onClick = {
-                    navController.navigate(AddBuddyScreenDestination)
+                    navController.navigate(
+                        AddBuddyScreenDestination(
+                            LocationModel(
+                                cameraPosition.position.target.latitude,
+                                cameraPosition.position.target.longitude
+                            )
+                        )
+                    )
                 }, modifier = Modifier.fillMaxWidth()) {
                     Text(text = "Pick this location")
                 }

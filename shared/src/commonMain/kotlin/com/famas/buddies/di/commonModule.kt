@@ -30,7 +30,7 @@ val mainModule = module {
     }
 
     single<AddBuddyApi> {
-        AddBuddyApiImpl()
+        AddBuddyApiImpl(get())
     }
 
     single<AddBuddyRepository> {

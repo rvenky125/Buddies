@@ -1,5 +1,6 @@
 package com.famas.buddies.android.screens.screen_add_buddy.components
 
+import android.net.Uri
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
@@ -16,27 +17,31 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import coil.compose.AsyncImage
 import com.famas.buddies.android.core.theme.SpaceMedium
 import com.famas.buddies.android.core.theme.SpaceSmall
 import com.famas.buddies.android.core.theme.SpaceVerySmall
 import com.famas.buddies.android.util.getScreenSize
 import com.famas.buddies.feature_add_buddy.interactors.BuddyFile
+import com.famas.buddies.util.ImageFile
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AddFilesLt(
-    files: List<BuddyFile>,
-    onAddFiles: (List<BuddyFile>) -> Unit,
+    files: List<ImageFile>,
+    onAddFiles: (List<ImageFile>) -> Unit,
     onRemoveFile: (Int) -> Unit,
     modifier: Modifier = Modifier
 ) {
     val screenSize = getScreenSize()
 
+    val context = LocalContext.current
+
     val launcher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.PickMultipleVisualMedia(),
     ) { list ->
-        onAddFiles(list.map { BuddyFile.Image(label = "", uri = it.toString()) })
+        onAddFiles(list.map { ImageFile(it, context.contentResolver) })
     }
 
     Column {
@@ -53,13 +58,10 @@ fun AddFilesLt(
             verticalArrangement = Arrangement.Center,
         ) {
             items(files) {
-                when (it) {
-                    is BuddyFile.Image -> ImageFileItem(
-                        file = it,
-                        modifier = Modifier.aspectRatio(1f)
-                    )
-                    is BuddyFile.Video -> VideoFileItem(file = it)
-                }
+                ImageFileItem(
+                    file = it.uri,
+                    modifier = Modifier.aspectRatio(1f)
+                )
             }
 
             item {
@@ -72,9 +74,9 @@ fun AddFilesLt(
 }
 
 @Composable
-fun ImageFileItem(file: BuddyFile.Image, modifier: Modifier = Modifier) {
+fun ImageFileItem(file: Uri, modifier: Modifier = Modifier) {
     AsyncImage(
-        model = file.uri,
+        model = file,
         contentDescription = null,
         modifier = modifier.background(Color.Red),
         contentScale = ContentScale.Crop

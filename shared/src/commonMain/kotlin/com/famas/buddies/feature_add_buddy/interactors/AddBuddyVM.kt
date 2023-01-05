@@ -1,6 +1,6 @@
 package com.famas.buddies.feature_add_buddy.interactors
 
-import com.famas.buddies.feature_add_buddy.data.request.BuddyDto
+import com.famas.buddies.feature_add_buddy.data.request.PostBuddyRequest
 import com.famas.buddies.feature_add_buddy.domain.repository.AddBuddyRepository
 import com.famas.buddies.feature_select_map.domain.model.LocationModel
 import com.famas.buddies.util.Response
@@ -54,31 +54,34 @@ class AddBuddyVM(
         }
     }
 
+    fun setPickedLocation(picketLocationModel: LocationModel) {
+        location = picketLocationModel
+    }
 
     private fun onSubmit() {
-        if (location == null || _state.value.files.isEmpty() || _state.value.name.isEmpty()) {
-            //TODO Need to show message from here
-            return
-        }
-
         viewModelScope.launch {
+            if (location == null || _state.value.name.isEmpty()) {
+                //TODO Need to show message from here
+                _uiEvent.emit(UiEvent.ShowMessage("Please provide all fields"))
+                return@launch
+            }
+
             _state.value = state.value.copy(loading = true)
             val response = addBuddyRepository.addBuddy(
-                BuddyDto(
-                    name = _state.value.name,
+                PostBuddyRequest(
+                    buddy_name = _state.value.name,
                     lat = location?.longitude!!,
                     lng = location?.longitude!!,
                     note = _state.value.note,
-                    files = _state.value.files.map { it.uri },
-                    createdDateTimestamp = GMTDate().timestamp
-                )
+                ),
+                _state.value.files
             )
             _state.value = state.value.copy(loading = false)
 
             when (response) {
                 is Response.Success -> {
                     _uiEvent.emit(UiEvent.ShowMessage("Buddy added successfully"))
-                    _uiEvent.emit(UiEvent.GoBack)
+//                    _uiEvent.emit(UiEvent.GoBack)
                 }
                 is Response.Failure -> {
                     _uiEvent.emit(UiEvent.ShowMessage("Failed to add buddy"))
