@@ -44,4 +44,6 @@ dependencies {
     implementation("io.insert-koin:koin-logger-slf4j:$koin_ktor_version")
 
     implementation("io.ktor:ktor-serialization-kotlinx-json:$ktor_version")
+
+    implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.4.0")
 }

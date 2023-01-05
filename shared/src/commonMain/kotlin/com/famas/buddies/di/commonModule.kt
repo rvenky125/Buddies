@@ -4,6 +4,10 @@ import com.famas.buddies.feature_add_buddy.data.api.AddBuddyApi
 import com.famas.buddies.feature_add_buddy.data.api.AddBuddyApiImpl
 import com.famas.buddies.feature_add_buddy.data.repository.AddBuddyRepoImpl
 import com.famas.buddies.feature_add_buddy.domain.repository.AddBuddyRepository
+import com.famas.buddies.feature_feed.data.api.FeedApi
+import com.famas.buddies.feature_feed.data.api.FeedApiImpl
+import com.famas.buddies.feature_feed.data.repository.FeedRepositoryImpl
+import com.famas.buddies.feature_feed.domain.repository.FeedRepository
 import com.famas.buddies.feature_select_map.data.api.MapApi
 import com.famas.buddies.feature_select_map.data.api.MapApiImpl
 import com.famas.buddies.feature_select_map.data.repository.MapRepoImpl
@@ -43,5 +47,13 @@ val mainModule = module {
 
     single<MapRepository> {
         MapRepoImpl(get())
+    }
+
+    single<FeedApi> {
+        FeedApiImpl(get())
+    }
+
+    single<FeedRepository> {
+        FeedRepositoryImpl(get())
     }
 }

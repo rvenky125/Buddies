@@ -13,6 +13,7 @@ import io.ktor.server.request.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import io.ktor.util.date.*
+import kotlinx.datetime.Clock
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 import java.io.File
@@ -52,7 +53,7 @@ fun Route.postBuddyRoute(
                     files = fileUrls,
                     lat = request.lat,
                     lng = request.lng,
-                    created_at = GMTDate().timestamp.toInt()
+                    created_at = Clock.System.now().epochSeconds.toInt()
                 )
             )
 

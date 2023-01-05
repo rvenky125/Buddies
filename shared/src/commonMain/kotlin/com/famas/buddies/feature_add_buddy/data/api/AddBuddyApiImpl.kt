@@ -2,6 +2,7 @@ package com.famas.buddies.feature_add_buddy.data.api
 
 import com.famas.buddies.feature_add_buddy.data.request.PostBuddyRequest
 import com.famas.buddies.util.BasicApiResponse
+import com.famas.buddies.util.Constants
 import com.famas.buddies.util.ImageFile
 import com.famas.buddies.util.toByteArray
 import io.ktor.client.*
@@ -20,7 +21,7 @@ class AddBuddyApiImpl(
 ) : AddBuddyApi {
     override suspend fun addBuddy(buddy: PostBuddyRequest, files: List<ImageFile>): BasicApiResponse<Unit> {
         return httpClient.submitFormWithBinaryData(
-            "http://192.168.111.70:8080/buddy/add",
+            "${Constants.BASE_URL}buddy/add",
             formData =  formData {
                 append("data", Json.encodeToString(buddy))
                 files.forEachIndexed { index, file ->

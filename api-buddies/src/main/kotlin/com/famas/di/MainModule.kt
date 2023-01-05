@@ -1,5 +1,7 @@
 package com.famas.di
 
+import com.famas.data.repository.get_buddies.GetBuddiesRepository
+import com.famas.data.repository.get_buddies.GetBuddyRepoImpl
 import com.famas.data.repository.post_buddies.PostBuddyRepoImpl
 import com.famas.data.repository.post_buddies.PostBuddyRepository
 import com.famas.util.Constants
@@ -15,5 +17,9 @@ val mainModule = module {
 
     single<PostBuddyRepository> {
         PostBuddyRepoImpl(get())
+    }
+
+    single<GetBuddiesRepository> {
+        GetBuddyRepoImpl(get())
     }
 }
