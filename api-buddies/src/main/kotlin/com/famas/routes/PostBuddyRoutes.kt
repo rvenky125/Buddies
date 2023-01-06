@@ -48,12 +48,14 @@ fun Route.postBuddyRoute(
         postBuddyRequest?.let { request ->
             val postBuddyAcknowledged = buddyRepo.postBuddy(
                 buddy = Buddy(
-                    request.buddy_name,
+                    name=request.buddy_name,
                     note = request.note,
                     files = fileUrls,
                     lat = request.lat,
                     lng = request.lng,
-                    created_at = Clock.System.now().epochSeconds.toInt()
+                    created_at = Clock.System.now().epochSeconds.toInt(),
+                    age = request.age,
+                    gender = request.gender
                 )
             )
 

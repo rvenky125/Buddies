@@ -11,6 +11,8 @@ data class Buddy(
     val lat: Double,
     val lng: Double,
     val created_at: Int,
+    val age: Int,
+    val gender: Char,
     @BsonId
     val id: String = ObjectId().toString()
 )

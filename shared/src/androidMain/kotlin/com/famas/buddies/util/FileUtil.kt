@@ -1,7 +1,6 @@
 package com.famas.buddies.util
 
 import android.content.ContentResolver
-import android.content.Context
 import android.net.Uri
 
 actual typealias ImageFile = ImageUri

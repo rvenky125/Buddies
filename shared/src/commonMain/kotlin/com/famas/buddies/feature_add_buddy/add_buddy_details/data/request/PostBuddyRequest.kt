@@ -1,4 +1,4 @@
-package com.famas.data.requests
+package com.famas.buddies.feature_add_buddy.add_buddy_details.data.request
 
 @kotlinx.serialization.Serializable
 data class PostBuddyRequest(

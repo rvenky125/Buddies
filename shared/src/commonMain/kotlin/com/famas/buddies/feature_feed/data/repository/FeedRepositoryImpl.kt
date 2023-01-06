@@ -3,7 +3,6 @@ package com.famas.buddies.feature_feed.data.repository
 import com.famas.buddies.feature_feed.data.api.FeedApi
 import com.famas.buddies.feature_feed.domain.model.BuddyDto
 import com.famas.buddies.feature_feed.domain.repository.FeedRepository
-import com.famas.buddies.util.BasicApiResponse
 import com.famas.buddies.util.Response
 
 class FeedRepositoryImpl(
