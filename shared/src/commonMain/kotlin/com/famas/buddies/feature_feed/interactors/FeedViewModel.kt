@@ -23,14 +23,14 @@ class FeedViewModel(
     private val _uiEvent = MutableSharedFlow<UiEvent>()
     val uiEvent = _uiEvent.asSharedFlow().cFlow()
 
-    private fun syncBuddies() {
+    fun syncBuddies() {
         viewModelScope.launch {
             _state.value = state.value.copy(
                 loading = true
             )
             val response = repository.getBuddies()
             _state.value = state.value.copy(
-                loading = true
+                loading = false
             )
             when (response) {
                 is Response.Success -> {

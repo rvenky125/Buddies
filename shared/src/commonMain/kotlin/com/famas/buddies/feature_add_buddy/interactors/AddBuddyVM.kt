@@ -81,7 +81,7 @@ class AddBuddyVM(
             when (response) {
                 is Response.Success -> {
                     _uiEvent.emit(UiEvent.ShowMessage("Buddy added successfully"))
-//                    _uiEvent.emit(UiEvent.GoBack)
+                    _uiEvent.emit(UiEvent.GoBack)
                 }
                 is Response.Failure -> {
                     _uiEvent.emit(UiEvent.ShowMessage("Failed to add buddy"))

@@ -8,6 +8,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.famas.buddies.android.core.theme.SpaceSemiSmall
@@ -35,7 +36,8 @@ fun BuddyListItem(buddy: BuddyDto, modifier: Modifier = Modifier) {
                     contentDescription = null,
                     modifier = Modifier
                         .weight(0.4f)
-                        .height(130.dp)
+                        .height(130.dp),
+                    contentScale = ContentScale.Crop
                 )
                 Column(
                     modifier = Modifier

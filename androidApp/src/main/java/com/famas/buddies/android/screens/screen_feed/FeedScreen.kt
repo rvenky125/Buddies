@@ -10,9 +10,12 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.window.Dialog
 import androidx.navigation.NavController
 import com.famas.buddies.android.core.theme.SpaceMedium
 import com.famas.buddies.android.core.theme.SpaceSemiSmall
@@ -36,6 +39,10 @@ fun FeedScreen(
 
     val state = viewModel.state.collectAsState().value
 
+    LaunchedEffect(key1 = Unit, block = {
+        viewModel.syncBuddies()
+    })
+
     Scaffold(
         floatingActionButton = {
             ExtendedFloatingActionButton(onClick = {
@@ -50,6 +57,13 @@ fun FeedScreen(
             items(state.buddies) {
                 BuddyListItem(buddy = it, modifier = Modifier.padding(vertical = SpaceSemiSmall))
             }
+        }
+    }
+
+
+    if (state.loading) {
+        Dialog(onDismissRequest = { /*TODO*/ }) {
+            CircularProgressIndicator()
         }
     }
 }

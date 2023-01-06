@@ -6,6 +6,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.ImeAction
@@ -24,6 +25,7 @@ import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import com.ramcosta.composedestinations.navigation.popUpTo
 import com.ramcosta.composedestinations.spec.DestinationStyle
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 import org.koin.androidx.compose.getViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -33,13 +35,16 @@ fun AddBuddyScreen(pickedLocationModel: LocationModel, snackbarHostState: Snackb
     val screenSize = getScreenSize()
     val viewModel: AddBuddyVM = getViewModel()
     val state = viewModel.state.collectAsState().value
+    val coroutine = rememberCoroutineScope()
 
     LaunchedEffect(key1 = Unit, block = {
         viewModel.setPickedLocation(pickedLocationModel)
         viewModel.uiEvent.collectLatest {
             when (it) {
                 is UiEvent.ShowMessage -> {
-                    snackbarHostState.showSnackbar(it.message)
+                    coroutine.launch {
+                        snackbarHostState.showSnackbar(it.message)
+                    }
                 }
                 is UiEvent.Navigate -> {
 
