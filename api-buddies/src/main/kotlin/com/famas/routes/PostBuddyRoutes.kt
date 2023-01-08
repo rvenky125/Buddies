@@ -1,4 +1,4 @@
-package com.famas.routes
+    package com.famas.routes
 
 import com.famas.data.models.Buddy
 import com.famas.data.repository.post_buddies.PostBuddyRepository
