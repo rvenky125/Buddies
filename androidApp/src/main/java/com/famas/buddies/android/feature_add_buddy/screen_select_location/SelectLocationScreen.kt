@@ -1,6 +1,7 @@
 package com.famas.buddies.android.feature_add_buddy.screen_select_location
 
 import android.util.Log
+
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -10,8 +11,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
@@ -20,6 +23,7 @@ import com.famas.buddies.android.core.theme.SpaceLarge
 import com.famas.buddies.android.core.theme.SpaceMedium
 import com.famas.buddies.android.destinations.AddBuddyScreenDestination
 import com.famas.buddies.android.util.getScreenSize
+import com.famas.buddies.feature_add_buddy.add_buddy_details.interactors.AddBuddyNavArgs
 import com.famas.buddies.feature_add_buddy.select_location_map.domain.model.LocationModel
 import com.famas.buddies.feature_add_buddy.select_location_map.interactors.SelectLocationEvent
 import com.famas.buddies.feature_add_buddy.select_location_map.interactors.SelectLocationVM
@@ -41,6 +45,10 @@ fun SelectLocationScreen(
     val cameraPosition = rememberCameraPositionState()
 
     val state = viewModel.state.collectAsState().value
+
+    val context = LocalContext.current
+
+    val coroutine = rememberCoroutineScope()
 
     LaunchedEffect(key1 = cameraPosition.position.target, block = {
         delay(500)
@@ -82,11 +90,15 @@ fun SelectLocationScreen(
                 Text(text = if (state.loading) "Loading..." else state.placeToShow.name)
                 Spacer(modifier = Modifier.height(SpaceMedium))
                 Button(onClick = {
+                    val target = cameraPosition.position.target
                     navController.navigate(
                         AddBuddyScreenDestination(
-                            LocationModel(
-                                cameraPosition.position.target.latitude,
-                                cameraPosition.position.target.longitude
+                            addBuddyNavArgs = AddBuddyNavArgs(
+                                location = LocationModel(
+                                    target.latitude,
+                                    target.longitude
+                                ),
+                                place = state.placeToShow
                             )
                         )
                     )

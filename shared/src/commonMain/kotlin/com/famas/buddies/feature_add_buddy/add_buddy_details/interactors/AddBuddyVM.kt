@@ -2,7 +2,6 @@ package com.famas.buddies.feature_add_buddy.add_buddy_details.interactors
 
 import com.famas.buddies.feature_add_buddy.add_buddy_details.data.request.PostBuddyRequest
 import com.famas.buddies.feature_add_buddy.add_buddy_details.domain.repository.AddBuddyRepository
-import com.famas.buddies.feature_add_buddy.select_location_map.domain.model.LocationModel
 import com.famas.buddies.util.Response
 import com.famas.buddies.util.UiEvent
 import dev.icerock.moko.mvvm.flow.CFlow
@@ -24,7 +23,7 @@ class AddBuddyVM(
     private val _uiEvent = MutableSharedFlow<UiEvent>()
     val uiEvent: CFlow<UiEvent> = _uiEvent.asSharedFlow().cFlow()
 
-    private var location: LocationModel? = null
+    private var addBuddyNavArgs: AddBuddyNavArgs? = null
 
     fun onEvent(event: AddBuddyEvent) {
         when (event) {
@@ -47,20 +46,34 @@ class AddBuddyVM(
             is AddBuddyEvent.OnChangeShowMap -> {
                 _state.value = state.value.copy(showMap = event.show)
             }
+            is AddBuddyEvent.OnAgeChange -> {
+                _state.value = state.value.copy(
+                    age = event.age
+                )
+            }
+            is AddBuddyEvent.OnGenderChange -> {
+                _state.value = state.value.copy(
+                    gender = event.gender
+                )
+            }
             AddBuddyEvent.OnSubmit -> {
                 onSubmit()
             }
         }
     }
 
-    fun setPickedLocation(picketLocationModel: LocationModel) {
-        location = picketLocationModel
+    fun setPickedLocation(navArgs: AddBuddyNavArgs) {
+        addBuddyNavArgs = navArgs
     }
 
     private fun onSubmit() {
         viewModelScope.launch {
-            if (location == null || _state.value.name.isEmpty()) {
-                //TODO Need to show message from here
+            if (_state.value.age.toFloatOrNull() == null) {
+                _uiEvent.emit(UiEvent.ShowMessage("Please provide proper age"))
+                return@launch
+            }
+
+            if (addBuddyNavArgs == null || _state.value.name.isEmpty()) {
                 _uiEvent.emit(UiEvent.ShowMessage("Please provide all fields"))
                 return@launch
             }
@@ -69,11 +82,12 @@ class AddBuddyVM(
             val response = addBuddyRepository.addBuddy(
                 PostBuddyRequest(
                     buddy_name = _state.value.name,
-                    lat = location?.longitude!!,
-                    lng = location?.longitude!!,
+                    lat = addBuddyNavArgs?.location?.latitude ?: return@launch,
+                    lng = addBuddyNavArgs?.location?.longitude ?: return@launch,
                     note = _state.value.note,
-                    age = 2,
-                    gender = 'G'
+                    age = _state.value.age.toFloatOrNull() ?: return@launch,
+                    gender = _state.value.gender?.id ?: return@launch,
+                    address = addBuddyNavArgs?.place?.address ?: return@launch
                 ),
                 _state.value.files
             )

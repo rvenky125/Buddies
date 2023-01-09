@@ -6,6 +6,7 @@ data class PostBuddyRequest(
     val note: String,
     val lat: Double,
     val lng: Double,
-    val age: Int,
-    val gender: Char
+    val age: Float,
+    val gender: Char,
+    val address: String
 )

@@ -23,7 +23,6 @@ import com.famas.buddies.android.core.theme.SpaceMedium
 import com.famas.buddies.android.core.theme.SpaceSmall
 import com.famas.buddies.android.core.theme.SpaceVerySmall
 import com.famas.buddies.android.util.getScreenSize
-import com.famas.buddies.feature_add_buddy.add_buddy_details.interactors.BuddyFile
 import com.famas.buddies.util.ImageFile
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -81,11 +80,6 @@ fun ImageFileItem(file: Uri, modifier: Modifier = Modifier) {
         modifier = modifier.background(Color.Red),
         contentScale = ContentScale.Crop
     )
-}
-
-@Composable
-fun VideoFileItem(file: BuddyFile.Video, modifier: Modifier = Modifier) {
-
 }
 
 @OptIn(ExperimentalMaterial3Api::class)

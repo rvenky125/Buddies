@@ -28,6 +28,7 @@ fun AppNavigation(
     ModalBottomSheetLayout(
         bottomSheetNavigator = bottomSheetNavigator,
         sheetBackgroundColor = MaterialTheme.colorScheme.background,
+        modifier = modifier,
         sheetElevation = SpaceSmall,
         sheetShape = RoundedCornerShape(topStart = SpaceSmall, topEnd = SpaceSmall),
     ) {
@@ -35,10 +36,9 @@ fun AppNavigation(
             navGraph = NavGraphs.root,
             navController = mainNavigator,
             engine = engine,
-            modifier = modifier,
             dependenciesContainerBuilder = {
                 dependency(snackbarHostState)
-            }
+            },
         )
     }
 }

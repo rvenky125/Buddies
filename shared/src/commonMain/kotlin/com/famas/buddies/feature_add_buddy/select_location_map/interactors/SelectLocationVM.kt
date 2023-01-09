@@ -53,7 +53,6 @@ class SelectLocationVM(
                         queryValue = selectedPlace?.name ?: ""
                     )
             }
-            else -> {}
         }
     }
 }

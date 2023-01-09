@@ -64,4 +64,6 @@ dependencies {
 
     implementation(Maps.mapsCompose)
     implementation(Maps.playServicesMaps)
+
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.1")
 }

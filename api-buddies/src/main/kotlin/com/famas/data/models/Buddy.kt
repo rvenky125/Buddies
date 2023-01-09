@@ -8,11 +8,12 @@ data class Buddy(
     val name: String,
     val note: String,
     val files: List<String>,
+    val created_at: Int,
+    val age: Float,
+    val gender: Char,
     val lat: Double,
     val lng: Double,
-    val created_at: Int,
-    val age: Int,
-    val gender: Char,
+    val address: String = "",
     @BsonId
     val id: String = ObjectId().toString()
 )

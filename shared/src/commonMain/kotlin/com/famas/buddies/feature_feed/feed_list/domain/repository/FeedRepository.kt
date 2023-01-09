@@ -1,6 +1,6 @@
 package com.famas.buddies.feature_feed.domain.repository
 
-import com.famas.buddies.feature_feed.domain.model.BuddyDto
+import com.famas.buddies.feature_feed.feed_list.domain.model.BuddyDto
 import com.famas.buddies.util.Response
 
 interface FeedRepository {

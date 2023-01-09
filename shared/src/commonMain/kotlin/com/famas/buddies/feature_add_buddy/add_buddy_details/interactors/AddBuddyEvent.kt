@@ -10,4 +10,6 @@ sealed class AddBuddyEvent {
     data class OnNoteChange(val text: String) : AddBuddyEvent()
     data class OnChangeShowMap(val show: Boolean) : AddBuddyEvent()
     object OnSubmit : AddBuddyEvent()
+    data class OnAgeChange(val age: String) : AddBuddyEvent()
+    data class OnGenderChange(val gender: Gender) : AddBuddyEvent()
 }

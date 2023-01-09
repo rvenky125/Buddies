@@ -8,26 +8,12 @@ data class AddBuddyState(
     val files: List<ImageFile> = emptyList(),
     val note: String = "",
     val name: String = "",
-    val showMap: Boolean = false
+    val showMap: Boolean = false,
+    val age: String = "",
+    val gender: Gender? = null
 )
 
-sealed class BuddyFile(
-    val label: String = "",
-    val uri: String = ""
-) {
-    class Image(
-        label: String = "",
-        uri: String = ""
-    ) : BuddyFile(label, uri)
 
-    class Video(
-        label: String = "",
-        uri: String = ""
-    ) : BuddyFile(label, uri)
+enum class Gender(val id: Char) {
+    Male('M'), Female('F'), Other('O')
 }
-
-
-data class BuddyImage(
-    val label: String,
-    val uri: String
-)

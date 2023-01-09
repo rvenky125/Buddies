@@ -1,6 +1,6 @@
 package com.famas.buddies.feature_feed.data.api
 
-import com.famas.buddies.feature_feed.domain.model.BuddyDto
+import com.famas.buddies.feature_feed.feed_list.domain.model.BuddyDto
 import com.famas.buddies.util.BasicApiResponse
 import com.famas.buddies.util.Constants
 import io.ktor.client.*

@@ -55,7 +55,8 @@ fun Route.postBuddyRoute(
                     lng = request.lng,
                     created_at = Clock.System.now().epochSeconds.toInt(),
                     age = request.age,
-                    gender = request.gender
+                    gender = request.gender,
+                    address = request.address
                 )
             )
 

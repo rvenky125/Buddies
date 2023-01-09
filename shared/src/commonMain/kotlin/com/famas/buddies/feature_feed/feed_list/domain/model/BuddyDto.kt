@@ -1,4 +1,4 @@
-package com.famas.buddies.feature_feed.domain.model
+package com.famas.buddies.feature_feed.feed_list.domain.model
 
 @kotlinx.serialization.Serializable
 data class BuddyDto(
@@ -7,6 +7,9 @@ data class BuddyDto(
     val files: List<String>,
     val lat: Double,
     val lng: Double,
+    val gender: Char,
+    val age: Float,
     val created_at: Long,
-    val id: String
+    val address: String = "",
+    val id: String,
 )

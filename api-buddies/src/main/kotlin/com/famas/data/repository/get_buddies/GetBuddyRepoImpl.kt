@@ -8,6 +8,7 @@ class GetBuddyRepoImpl(
 ) : GetBuddiesRepository {
     val buddies = db.getCollection<Buddy>()
     override suspend fun getBuddies(): List<Buddy> {
-        return buddies.find().toList()
+        return buddies
+            .find().toList().asReversed()
     }
 }

@@ -1,7 +1,6 @@
-package com.famas.buddies.android.feature_feed
+package com.famas.buddies.android.feature_feed.feed_list
 
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
@@ -11,12 +10,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.navigation.NavController
 import com.famas.buddies.android.core.theme.SpaceMedium
 import com.famas.buddies.android.core.theme.SpaceSemiSmall
+import com.famas.buddies.android.destinations.BuddyOverviewDestination
 import com.famas.buddies.android.destinations.SelectLocationScreenDestination
-import com.famas.buddies.android.feature_feed.components.BuddyListItem
+import com.famas.buddies.android.feature_feed.feed_list.components.BuddyListItem
+import com.famas.buddies.feature_feed.feed_list.domain.model.BuddyDto
 import com.famas.buddies.feature_feed.interactors.FeedViewModel
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.annotation.RootNavGraph
@@ -46,11 +48,31 @@ fun FeedScreen(
                 Icon(imageVector = Icons.Default.Add, contentDescription = null)
                 Text(text = "Add Buddy")
             }
+        },
+        topBar = {
+            TopAppBar(title = {
+                Text(text = "Buddies")
+            })
         }
     ) { values ->
-        LazyColumn(contentPadding = PaddingValues(horizontal = SpaceMedium), modifier = Modifier.padding(values)) {
+        LazyColumn(
+            contentPadding = PaddingValues(horizontal = SpaceMedium),
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(values)
+        ) {
             items(state.buddies) {
-                BuddyListItem(buddy = it, modifier = Modifier.padding(vertical = SpaceSemiSmall))
+                BuddyListItem(buddy = it, modifier = Modifier.padding(vertical = SpaceSemiSmall)) {
+                    navController.navigate(
+                        BuddyOverviewDestination(
+                            buddy = it
+                        )
+                    )
+                }
+            }
+
+            item {
+                Spacer(modifier = Modifier.height(100.dp))
             }
         }
     }
