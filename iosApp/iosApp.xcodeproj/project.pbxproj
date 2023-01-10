@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,6 +11,12 @@
 		058557D9273AAEEB004C7B11 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */; };
 		0A7E87EC296AB93900EC776B /* FeedScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7E87EB296AB93900EC776B /* FeedScreen.swift */; };
 		0A7E87EE296ABB4300EC776B /* FeedScreenIosVm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7E87ED296ABB4300EC776B /* FeedScreenIosVm.swift */; };
+		0A8AA88F296CE8C4006583EB /* SwiftUIRouter in Frameworks */ = {isa = PBXBuildFile; productRef = 0A8AA88E296CE8C4006583EB /* SwiftUIRouter */; };
+		0A8AA893296CED78006583EB /* SelectLocationScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8AA892296CED78006583EB /* SelectLocationScreen.swift */; };
+		0A8AA895296CED9D006583EB /* SelectLocationIosVm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8AA894296CED9D006583EB /* SelectLocationIosVm.swift */; };
+		0A8AA898296CEE11006583EB /* AddBuddyScreeen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8AA897296CEE11006583EB /* AddBuddyScreeen.swift */; };
+		0A8AA89A296CEE36006583EB /* AddBuddyIosVm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8AA899296CEE36006583EB /* AddBuddyIosVm.swift */; };
+		0A8AA89C296CF766006583EB /* GoogleMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8AA89B296CF765006583EB /* GoogleMap.swift */; };
 		2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152FB032600AC8F00CF470E /* iOSApp.swift */; };
 		7555FF83242A565900829871 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7555FF82242A565900829871 /* ContentView.swift */; };
 		EC13DEEE61239E9A18360139 /* Pods_iosApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E25A114325AEA1735CCE653 /* Pods_iosApp.framework */; };
@@ -21,6 +27,11 @@
 		058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0A7E87EB296AB93900EC776B /* FeedScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedScreen.swift; sourceTree = "<group>"; };
 		0A7E87ED296ABB4300EC776B /* FeedScreenIosVm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedScreenIosVm.swift; sourceTree = "<group>"; };
+		0A8AA892296CED78006583EB /* SelectLocationScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectLocationScreen.swift; sourceTree = "<group>"; };
+		0A8AA894296CED9D006583EB /* SelectLocationIosVm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectLocationIosVm.swift; sourceTree = "<group>"; };
+		0A8AA897296CEE11006583EB /* AddBuddyScreeen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBuddyScreeen.swift; sourceTree = "<group>"; };
+		0A8AA899296CEE36006583EB /* AddBuddyIosVm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBuddyIosVm.swift; sourceTree = "<group>"; };
+		0A8AA89B296CF765006583EB /* GoogleMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMap.swift; sourceTree = "<group>"; };
 		2152FB032600AC8F00CF470E /* iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSApp.swift; sourceTree = "<group>"; };
 		5E25A114325AEA1735CCE653 /* Pods_iosApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iosApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7555FF7B242A565900829871 /* iosApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iosApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -36,6 +47,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EC13DEEE61239E9A18360139 /* Pods_iosApp.framework in Frameworks */,
+				0A8AA88F296CE8C4006583EB /* SwiftUIRouter in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,6 +79,34 @@
 			path = screen_feeed;
 			sourceTree = "<group>";
 		};
+		0A8AA890296CEC3C006583EB /* feature_add_buddy */ = {
+			isa = PBXGroup;
+			children = (
+				0A8AA896296CEDAD006583EB /* screen_add_buddy */,
+				0A8AA891296CEC5F006583EB /* screen_select_location */,
+			);
+			path = feature_add_buddy;
+			sourceTree = "<group>";
+		};
+		0A8AA891296CEC5F006583EB /* screen_select_location */ = {
+			isa = PBXGroup;
+			children = (
+				0A8AA892296CED78006583EB /* SelectLocationScreen.swift */,
+				0A8AA894296CED9D006583EB /* SelectLocationIosVm.swift */,
+				0A8AA89B296CF765006583EB /* GoogleMap.swift */,
+			);
+			path = screen_select_location;
+			sourceTree = "<group>";
+		};
+		0A8AA896296CEDAD006583EB /* screen_add_buddy */ = {
+			isa = PBXGroup;
+			children = (
+				0A8AA897296CEE11006583EB /* AddBuddyScreeen.swift */,
+				0A8AA899296CEE36006583EB /* AddBuddyIosVm.swift */,
+			);
+			path = screen_add_buddy;
+			sourceTree = "<group>";
+		};
 		7555FF72242A565900829871 = {
 			isa = PBXGroup;
 			children = (
@@ -88,6 +128,7 @@
 		7555FF7D242A565900829871 /* iosApp */ = {
 			isa = PBXGroup;
 			children = (
+				0A8AA890296CEC3C006583EB /* feature_add_buddy */,
 				0A7E87E9296AB8D300EC776B /* feature_feed */,
 				058557BA273AAA24004C7B11 /* Assets.xcassets */,
 				7555FF82242A565900829871 /* ContentView.swift */,
@@ -133,6 +174,9 @@
 			dependencies = (
 			);
 			name = iosApp;
+			packageProductDependencies = (
+				0A8AA88E296CE8C4006583EB /* SwiftUIRouter */,
+			);
 			productName = iosApp;
 			productReference = 7555FF7B242A565900829871 /* iosApp.app */;
 			productType = "com.apple.product-type.application";
@@ -161,6 +205,9 @@
 				Base,
 			);
 			mainGroup = 7555FF72242A565900829871;
+			packageReferences = (
+				0A8AA88D296CE8C4006583EB /* XCRemoteSwiftPackageReference "SwiftUIRouter" */,
+			);
 			productRefGroup = 7555FF7C242A565900829871 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -231,8 +278,13 @@
 			files = (
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
 				0A7E87EC296AB93900EC776B /* FeedScreen.swift in Sources */,
+				0A8AA893296CED78006583EB /* SelectLocationScreen.swift in Sources */,
+				0A8AA898296CEE11006583EB /* AddBuddyScreeen.swift in Sources */,
+				0A8AA89C296CF766006583EB /* GoogleMap.swift in Sources */,
 				0A7E87EE296ABB4300EC776B /* FeedScreenIosVm.swift in Sources */,
+				0A8AA89A296CEE36006583EB /* AddBuddyIosVm.swift in Sources */,
 				7555FF83242A565900829871 /* ContentView.swift in Sources */,
+				0A8AA895296CED9D006583EB /* SelectLocationIosVm.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -435,6 +487,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0A8AA88D296CE8C4006583EB /* XCRemoteSwiftPackageReference "SwiftUIRouter" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/frzi/SwiftUIRouter.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0A8AA88E296CE8C4006583EB /* SwiftUIRouter */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0A8AA88D296CE8C4006583EB /* XCRemoteSwiftPackageReference "SwiftUIRouter" */;
+			productName = SwiftUIRouter;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 7555FF73242A565900829871 /* Project object */;
 }

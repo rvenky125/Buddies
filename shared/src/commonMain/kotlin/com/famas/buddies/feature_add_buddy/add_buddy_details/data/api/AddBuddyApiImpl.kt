@@ -25,7 +25,7 @@ class AddBuddyApiImpl(
                     append(
                         "$index",
                         "$index.jpg",
-//                        contentType = ContentType.Application.,
+//                        contentType = ContentType.Application,
                     ) {
                         writeFully(file.toByteArray())
                     }

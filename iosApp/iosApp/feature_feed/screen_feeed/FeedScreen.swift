@@ -1,19 +1,24 @@
-//
-//  FeedScreen.swift
-//  iosApp
-//
-//  Created by VulcanTechs Developers on 08/01/23.
-//  Copyright © 2023 orgName. All rights reserved.
-//
-
 import SwiftUI
 
 struct FeedScreen: View {
+    @ObservedObject var viewModel = FeedScreenIosVm()
     
+    init() {
+        viewModel.observeState()
+    }
     
     var body: some View {
-        LazyVStack(alignment: .leading) {
-            ForEach()
-        }
+        LazyVStack {
+            ForEach(viewModel.state.buddies, id: \.self) { buddy in
+                Text("Placeholder \(buddy.name)")
+            }
+        }.frame(width: .infinity, height: .infinity)
     }
 }
+
+//
+//struct FeedScreen_Preview: PreviewProvider {
+//    static var previews: some View {
+//        FeedScreen()
+//    }
+//}

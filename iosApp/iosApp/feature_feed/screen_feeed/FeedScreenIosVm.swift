@@ -1,11 +1,21 @@
-//
-//  FeedScreenIosVm.swift
-//  iosApp
-//
-//  Created by VulcanTechs Developers on 08/01/23.
-//  Copyright © 2023 orgName. All rights reserved.
-//
-
 import Foundation
+import shared
 
 
+class FeedScreenIosVm: ObservableObject {
+    let feedScreenVm = ViewModels().feedViewModel
+    
+    @Published var state = FeedState(loading: false, buddies: [])
+    
+//    func onEvent(event: FeedEvent) {
+//        feedScreenVm.onEvent(event: event)
+//    }
+    
+    func observeState() {
+        feedScreenVm.state.subscribe(onCollect: { [weak self] state in
+            if let state {
+                self?.state = state
+            }
+        })
+    }
+}

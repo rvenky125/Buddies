@@ -14,6 +14,7 @@ class AddBuddyRepoImpl(private val addBuddyApi: AddBuddyApi) : AddBuddyRepositor
                 Response.Success()
             } else Response.Failure(response.message ?: "Unknown error occurred")
         } catch (e: Exception) {
+            print(e.message)
             Response.Failure("Something went wrong")
         }
     }
