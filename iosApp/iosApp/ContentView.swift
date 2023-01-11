@@ -1,20 +1,17 @@
 import SwiftUI
 import shared
-import SwiftUIRouter
+import UIKit
+import UIPilot
 
 struct ContentView: View {
+    @StateObject var pilot = UIPilot(initial: AppRoute.Feed)
+    
     var body: some View {
-        Router {
-            Route("feed") {
-                FeedScreen()
-            }
-            
-            Route("select_location") {
-                SelectLocationScreen()
-            }
-            
-            Route("add_buddy") {
-                AddBuddyScreeen()
+        UIPilotHost(pilot) { route in
+            switch route {
+                case .Feed: FeedScreen().navigationTitle("Buddies")
+                case .SelectLocation: SelectLocationScreen().navigationTitle("Buddy Location")
+                case .AddBuddy: AddBuddyScreeen().navigationTitle("Add Buddy")
             }
         }
     }

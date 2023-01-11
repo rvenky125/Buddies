@@ -1,5 +1,6 @@
 import SwiftUI
 import shared
+import GoogleMaps
 
 @main
 struct iOSApp: App {
@@ -10,6 +11,7 @@ struct iOSApp: App {
 	}
     
     init() {
+        GMSServices.provideAPIKey("AIzaSyDMUBcXRG08RcGle0no7luNMqiozxyrH6k")
         HelpersKt.doInitKoin()
     }
 }

@@ -2,6 +2,7 @@ package com.famas.buddies.util
 
 import kotlinx.cinterop.addressOf
 import kotlinx.cinterop.usePinned
+import platform.CoreLocation.CLLocation
 import platform.Foundation.NSData
 import platform.UIKit.UIImage
 import platform.UIKit.UIImagePNGRepresentation

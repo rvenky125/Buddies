@@ -1,15 +1,14 @@
-//
-//  SelectLocationScreen.swift
-//  iosApp
-//
-//  Created by VulcanTechs Developers on 10/01/23.
-//  Copyright © 2023 orgName. All rights reserved.
-//
-
 import SwiftUI
+import GoogleMaps
 
 struct SelectLocationScreen: View {
+    @ObservedObject var viewModel: SelectLocationIosVm = SelectLocationIosVm()
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            ZStack {
+                GoogleMapsView(onEvent: {event in viewModel.onEvent(event: event)}).edgesIgnoringSafeArea(.all)
+                
+            }
+        }
     }
 }

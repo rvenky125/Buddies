@@ -1,7 +1,9 @@
 import SwiftUI
+import UIPilot
 
 struct FeedScreen: View {
     @ObservedObject var viewModel = FeedScreenIosVm()
+    @EnvironmentObject var pilot: UIPilot<AppRoute>
     
     init() {
         viewModel.observeState()
@@ -10,9 +12,11 @@ struct FeedScreen: View {
     var body: some View {
         LazyVStack {
             ForEach(viewModel.state.buddies, id: \.self) { buddy in
-                Text("Placeholder \(buddy.name)")
-            }
-        }.frame(width: .infinity, height: .infinity)
+                Button("Placeholder \(buddy.name)") {
+                    pilot.push(.SelectLocation)
+                }
+            }.frame(width: .infinity, height: .infinity)
+        }
     }
 }
 

@@ -1,16 +1,31 @@
 PODS:
+  - GoogleMaps (7.2.0):
+    - GoogleMaps/Maps (= 7.2.0)
+  - GoogleMaps/Base (7.2.0)
+  - GoogleMaps/Maps (7.2.0):
+    - GoogleMaps/Base
   - shared (1.0)
+  - UIPilot (2.0.2)
 
 DEPENDENCIES:
+  - GoogleMaps (= 7.2.0)
   - shared (from `../shared`)
+  - UIPilot (~> 2.0.2)
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - GoogleMaps
+    - UIPilot
 
 EXTERNAL SOURCES:
   shared:
     :path: "../shared"
 
 SPEC CHECKSUMS:
+  GoogleMaps: 65ce5426e2398bb81433c8076f2ab6419c2c5537
   shared: 2d3b24a8fe27b7d9e65b8d075a9672fbc6a1aa10
+  UIPilot: dec727d11749dcb34654df4f8c94b98b29903566
 
-PODFILE CHECKSUM: f282da88f39e69507b0a255187c8a6b644477756
+PODFILE CHECKSUM: b50c399de5ed0a4ffcc02fb4210e655f209f77dc
 
 COCOAPODS: 1.10.1
