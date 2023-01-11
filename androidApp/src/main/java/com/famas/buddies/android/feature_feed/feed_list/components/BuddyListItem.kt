@@ -12,6 +12,7 @@ import com.famas.buddies.android.core.theme.SpaceSemiSmall
 import com.famas.buddies.android.core.theme.SpaceSmall
 import com.famas.buddies.android.core.theme.SpaceVerySmall
 import com.famas.buddies.feature_add_buddy.add_buddy_details.interactors.Gender
+import com.famas.buddies.feature_feed.feed_list.domain.model.Buddy
 import com.famas.buddies.feature_feed.feed_list.domain.model.BuddyDto
 import com.google.accompanist.flowlayout.FlowRow
 import java.text.SimpleDateFormat
@@ -19,7 +20,7 @@ import java.util.*
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun BuddyListItem(buddy: BuddyDto, modifier: Modifier = Modifier, onClick: () -> Unit) {
+fun BuddyListItem(buddy: Buddy, modifier: Modifier = Modifier, onClick: () -> Unit) {
     Log.d("myTag", buddy.files.toString())
     Card(modifier = modifier.fillMaxWidth(), onClick = {
         onClick()
@@ -66,9 +67,7 @@ fun BuddyListItem(buddy: BuddyDto, modifier: Modifier = Modifier, onClick: () ->
 //                ) {
                     OutlinedCard(colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.secondaryContainer)) {
                         Text(
-                            text = "${
-                                Gender.values().firstOrNull { it.id == buddy.gender }?.name ?: "N/A"
-                            }, ${buddy.age} Years",
+                            text = "${buddy.gender}, ${buddy.age} Years",
                             modifier = Modifier.padding(
                                 vertical = SpaceVerySmall,
                                 horizontal = SpaceSmall

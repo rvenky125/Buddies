@@ -9,7 +9,13 @@ struct ContentView: View {
     var body: some View {
         UIPilotHost(pilot) { route in
             switch route {
-                case .Feed: FeedScreen().navigationTitle("Buddies")
+                case .Feed: FeedScreen().navigationTitle("Buddies").toolbar {
+                    ToolbarItem(placement: .primaryAction) {
+                        Button("Add Buddy", action: {
+                            pilot.push(.SelectLocation)
+                        })
+                    }
+                }
                 case .SelectLocation: SelectLocationScreen().navigationTitle("Buddy Location")
                 case .AddBuddy: AddBuddyScreeen().navigationTitle("Add Buddy")
             }

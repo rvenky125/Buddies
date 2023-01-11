@@ -18,8 +18,7 @@ import com.famas.buddies.android.core.theme.SpaceSemiSmall
 import com.famas.buddies.android.destinations.BuddyOverviewDestination
 import com.famas.buddies.android.destinations.SelectLocationScreenDestination
 import com.famas.buddies.android.feature_feed.feed_list.components.BuddyListItem
-import com.famas.buddies.feature_feed.feed_list.domain.model.BuddyDto
-import com.famas.buddies.feature_feed.interactors.FeedViewModel
+import com.famas.buddies.feature_feed.feed_list.interactors.FeedViewModel
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.annotation.RootNavGraph
 import com.ramcosta.composedestinations.navigation.navigate

@@ -1,6 +1,7 @@
 package com.famas.buddies.feature_add_buddy.select_location_map.interactors
 
 import com.famas.buddies.feature_add_buddy.select_location_map.data.response.findplace.Candidate
+import com.famas.buddies.feature_add_buddy.select_location_map.domain.model.LocationModel
 import com.famas.buddies.feature_add_buddy.select_location_map.domain.model.PlaceToShow
 
 data class SelectLocationState(
@@ -8,5 +9,6 @@ data class SelectLocationState(
     val queryValue: String = "",
     val placeToShow: PlaceToShow = PlaceToShow("", ""),
     val places: List<Candidate> = emptyList(),
+    val location: LocationModel? = null,
     val selectedPlace: Candidate? = null
 )

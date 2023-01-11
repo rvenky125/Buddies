@@ -8,8 +8,8 @@ import com.famas.buddies.feature_add_buddy.select_location_map.data.repository.M
 import com.famas.buddies.feature_add_buddy.select_location_map.domain.repository.MapRepository
 import com.famas.buddies.feature_feed.data.api.FeedApi
 import com.famas.buddies.feature_feed.data.api.FeedApiImpl
-import com.famas.buddies.feature_feed.data.repository.FeedRepositoryImpl
-import com.famas.buddies.feature_feed.domain.repository.FeedRepository
+import com.famas.buddies.feature_feed.feed_list.data.repository.FeedRepositoryImpl
+import com.famas.buddies.feature_feed.feed_list.domain.repository.FeedRepository
 import io.ktor.client.*
 import io.ktor.client.plugins.contentnegotiation.*
 import io.ktor.client.plugins.logging.*

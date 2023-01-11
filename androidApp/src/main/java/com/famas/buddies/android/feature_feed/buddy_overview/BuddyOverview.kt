@@ -14,6 +14,7 @@ import androidx.compose.ui.graphics.Color
 import com.famas.buddies.android.core.theme.*
 import com.famas.buddies.android.feature_feed.buddy_overview.components.ParallaxImagePager
 import com.famas.buddies.feature_add_buddy.add_buddy_details.interactors.Gender
+import com.famas.buddies.feature_feed.feed_list.domain.model.Buddy
 import com.famas.buddies.feature_feed.feed_list.domain.model.BuddyDto
 import com.google.accompanist.flowlayout.FlowRow
 import com.google.accompanist.pager.ExperimentalPagerApi
@@ -27,7 +28,7 @@ import com.ramcosta.composedestinations.spec.DestinationStyle
 @OptIn(ExperimentalPagerApi::class)
 @Composable
 @Destination(style = DestinationStyle.BottomSheet::class)
-fun BuddyOverview(buddy: BuddyDto) {
+fun BuddyOverview(buddy: Buddy) {
     val cameraPositionState = rememberCameraPositionState()
     val markerState = rememberMarkerState(position = LatLng(buddy.lat, buddy.lng))
 
@@ -67,9 +68,7 @@ fun BuddyOverview(buddy: BuddyDto) {
             modifier = Modifier.padding(bottom = SpaceMedium)
         ) {
             Text(
-                text = "${
-                    Gender.values().firstOrNull { it.id == buddy.gender }?.name ?: "N/A"
-                }, ${buddy.age} Years",
+                text = "${buddy.gender}, ${buddy.age} Years",
                 modifier = Modifier.padding(
                     vertical = SpaceVerySmall,
                     horizontal = SpaceSmall

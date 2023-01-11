@@ -10,13 +10,14 @@ struct FeedScreen: View {
     }
     
     var body: some View {
-        LazyVStack {
+        List {
             ForEach(viewModel.state.buddies, id: \.self) { buddy in
-                Button("Placeholder \(buddy.name)") {
-                    pilot.push(.SelectLocation)
+                ZStack {
+                    BuddyItemCard(buddy: buddy)
+
                 }
-            }.frame(width: .infinity, height: .infinity)
-        }
+            }
+        }.listStyle(PlainListStyle())
     }
 }
 

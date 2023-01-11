@@ -22,6 +22,7 @@ class SelectLocationVM(
                 _state.value = state.value.copy(loading = event.isLoading)
             }
             is SelectLocationEvent.OnChangeLocation -> {
+                _state.value = state.value.copy(location = event.location)
                 viewModelScope.launch {
                     _state.value = state.value.copy(loading = true)
                     val result =

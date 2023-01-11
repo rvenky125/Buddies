@@ -1,6 +1,6 @@
-package com.famas.buddies.feature_feed.interactors
+package com.famas.buddies.feature_feed.feed_list.interactors
 
-import com.famas.buddies.feature_feed.domain.repository.FeedRepository
+import com.famas.buddies.feature_feed.feed_list.domain.repository.FeedRepository
 import com.famas.buddies.util.Response
 import com.famas.buddies.util.UiEvent
 import dev.icerock.moko.mvvm.flow.CStateFlow

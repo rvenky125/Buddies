@@ -18,6 +18,7 @@
 		0A8AA89A296CEE36006583EB /* AddBuddyIosVm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8AA899296CEE36006583EB /* AddBuddyIosVm.swift */; };
 		0A8AA89C296CF766006583EB /* GoogleMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8AA89B296CF765006583EB /* GoogleMap.swift */; };
 		0ABC8223296E55C900217535 /* GoogleMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABC8222296E55C900217535 /* GoogleMapView.swift */; };
+		0AD43746296EFE7500750B15 /* BuddyItemCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD43745296EFE7500750B15 /* BuddyItemCard.swift */; };
 		2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152FB032600AC8F00CF470E /* iOSApp.swift */; };
 		7555FF83242A565900829871 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7555FF82242A565900829871 /* ContentView.swift */; };
 		E08FA1F8CCB1A36C2E0AF58F /* Pods_iosApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9795A8D59AA740686ED21897 /* Pods_iosApp.framework */; };
@@ -35,6 +36,7 @@
 		0A8AA899296CEE36006583EB /* AddBuddyIosVm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBuddyIosVm.swift; sourceTree = "<group>"; };
 		0A8AA89B296CF765006583EB /* GoogleMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMap.swift; sourceTree = "<group>"; };
 		0ABC8222296E55C900217535 /* GoogleMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMapView.swift; sourceTree = "<group>"; };
+		0AD43745296EFE7500750B15 /* BuddyItemCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuddyItemCard.swift; sourceTree = "<group>"; };
 		2152FB032600AC8F00CF470E /* iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSApp.swift; sourceTree = "<group>"; };
 		7555FF7B242A565900829871 /* iosApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iosApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7555FF82242A565900829871 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -75,6 +77,7 @@
 		0A7E87EA296AB8E900EC776B /* screen_feeed */ = {
 			isa = PBXGroup;
 			children = (
+				0AD43743296EFE5700750B15 /* components */,
 				0A7E87EB296AB93900EC776B /* FeedScreen.swift */,
 				0A7E87ED296ABB4300EC776B /* FeedScreenIosVm.swift */,
 			);
@@ -114,6 +117,14 @@
 			isa = PBXGroup;
 			children = (
 				0ABC8222296E55C900217535 /* GoogleMapView.swift */,
+			);
+			path = components;
+			sourceTree = "<group>";
+		};
+		0AD43743296EFE5700750B15 /* components */ = {
+			isa = PBXGroup;
+			children = (
+				0AD43745296EFE7500750B15 /* BuddyItemCard.swift */,
 			);
 			path = components;
 			sourceTree = "<group>";
@@ -307,6 +318,7 @@
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
 				0A7E87EC296AB93900EC776B /* FeedScreen.swift in Sources */,
 				0A8AA893296CED78006583EB /* SelectLocationScreen.swift in Sources */,
+				0AD43746296EFE7500750B15 /* BuddyItemCard.swift in Sources */,
 				0A8AA898296CEE11006583EB /* AddBuddyScreeen.swift in Sources */,
 				0ABC8223296E55C900217535 /* GoogleMapView.swift in Sources */,
 				0A8AA89C296CF766006583EB /* GoogleMap.swift in Sources */,
