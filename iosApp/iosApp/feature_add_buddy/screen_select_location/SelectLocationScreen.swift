@@ -17,13 +17,15 @@ struct SelectLocationScreen: View {
             }
 
             VStack {
-                Text(viewModel.state.loading ? "Fetching" : viewModel.state.placeToShow.name)
+                Text(viewModel.state.loading ? "Fetching" : "viewModel.state.placeToShow.name").foregroundColor(.white)
                 Text(viewModel.state.placeToShow.address)
+                    .font(.system(size: 16, weight: .bold, design: .default))
+                    .foregroundColor(.gray)
+                    .padding(.top, 5)
                 Button("Pick this Location", action: {
                     pilot.push(.AddBuddy)
                 })
             }.frame(maxWidth: .infinity).background(Color(red: 32/255, green: 36/255, blue: 38/255))
-                .padding()
                 .modifier(CardModifier())
         }
     }
