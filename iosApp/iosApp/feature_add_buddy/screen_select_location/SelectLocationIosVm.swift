@@ -8,6 +8,7 @@ class SelectLocationIosVm : ObservableObject {
     @Published var state = SelectLocationState(loading: false, queryValue: "", placeToShow: PlaceToShow(name: "", address: ""), places: [], location: nil, selectedPlace: nil)
     
     func onEvent(event: SelectLocationEvent) {
+        print("ViewModel event")
         viewModel.onEvent(event: event)
     }
     

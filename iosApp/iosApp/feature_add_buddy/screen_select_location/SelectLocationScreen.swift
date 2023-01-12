@@ -7,6 +7,10 @@ struct SelectLocationScreen: View {
     @ObservedObject var viewModel: SelectLocationIosVm = SelectLocationIosVm()
     @EnvironmentObject var pilot: UIPilot<AppRoute>
     
+    init() {
+        viewModel.observeState()
+    }
+    
     var body: some View {
         ZStack(alignment: Alignment.bottom) {
             ZStack(alignment: .center) {
@@ -15,17 +19,14 @@ struct SelectLocationScreen: View {
                     .aspectRatio(contentMode: .fit)
                     .padding(.bottom, 30)
             }
-
-            VStack {
-                Text(viewModel.state.loading ? "Fetching" : "viewModel.state.placeToShow.name").foregroundColor(.white)
-                Text(viewModel.state.placeToShow.address)
-                    .font(.system(size: 16, weight: .bold, design: .default))
-                    .foregroundColor(.gray)
-                    .padding(.top, 5)
+            
+            ZStack {VStack {
+                Text(viewModel.state.loading ? "Fetching" : viewModel.state.placeToShow.address).foregroundColor(.white)
                 Button("Pick this Location", action: {
-                    pilot.push(.AddBuddy)
-                })
-            }.frame(maxWidth: .infinity).background(Color(red: 32/255, green: 36/255, blue: 38/255))
+                    pilot.push(.AddBuddy(args: AddBuddyNavArgs(location: viewModel.state.location ?? LocationModel(latitude: 0, longitude: 0), place: viewModel.state.placeToShow)))
+                }).padding(.top, 20).padding(.bottom, 10)
+                
+            }.padding()}.frame(maxWidth: .infinity).background(Color(red: 32/255, green: 36/255, blue: 38/255))
                 .modifier(CardModifier())
         }
     }

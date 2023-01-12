@@ -17,7 +17,7 @@ struct ContentView: View {
                     }
                 }
                 case .SelectLocation: SelectLocationScreen().navigationTitle("Buddy Location")
-                case .AddBuddy: AddBuddyScreeen().navigationTitle("Add Buddy")
+            case .AddBuddy(let addBuddyNavArgs): AddBuddyScreeen(addBuddyNavArgs: addBuddyNavArgs).navigationTitle("Add Buddy")
             }
         }
     }

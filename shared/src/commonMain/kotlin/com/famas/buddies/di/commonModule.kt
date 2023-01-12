@@ -16,6 +16,7 @@ import io.ktor.client.plugins.logging.*
 import io.ktor.serialization.kotlinx.json.*
 import kotlinx.serialization.json.Json
 import org.koin.dsl.module
+import kotlin.math.log
 
 val mainModule = module {
     single {

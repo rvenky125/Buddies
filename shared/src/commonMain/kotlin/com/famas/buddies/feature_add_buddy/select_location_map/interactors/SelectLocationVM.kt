@@ -30,7 +30,7 @@ class SelectLocationVM(
                     _state.value = state.value.copy(loading = false)
 
                     _state.value = state.value.copy(
-                        placeToShow = result.data ?: PlaceToShow("${result.message}", "address")
+                        placeToShow = result.data ?: PlaceToShow("${result.message}", "N/A")
                     )
                 }
             }
@@ -54,6 +54,7 @@ class SelectLocationVM(
                         queryValue = selectedPlace?.name ?: ""
                     )
             }
+            else -> {}
         }
     }
 }
