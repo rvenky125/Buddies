@@ -1,5 +1,6 @@
 import Foundation
 import shared
+import UIPilot
 
 class AddBuddyIosVm: ObservableObject {
     let viewModel = ViewModels().addBuddyViewModel
