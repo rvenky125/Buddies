@@ -11,6 +11,7 @@
 		058557D9273AAEEB004C7B11 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */; };
 		0A4E1ADB296E46AD0071CAC5 /* AppRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4E1ADA296E46AD0071CAC5 /* AppRoute.swift */; };
 		0A5E58682970C54C00F67382 /* CustomTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5E58672970C54C00F67382 /* CustomTextEditor.swift */; };
+		0A5E586A2970EA9C00F67382 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5E58692970EA9C00F67382 /* ImagePicker.swift */; };
 		0A7E87EC296AB93900EC776B /* FeedScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7E87EB296AB93900EC776B /* FeedScreen.swift */; };
 		0A7E87EE296ABB4300EC776B /* FeedScreenIosVm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7E87ED296ABB4300EC776B /* FeedScreenIosVm.swift */; };
 		0A8AA893296CED78006583EB /* SelectLocationScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8AA892296CED78006583EB /* SelectLocationScreen.swift */; };
@@ -30,6 +31,7 @@
 		058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0A4E1ADA296E46AD0071CAC5 /* AppRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRoute.swift; sourceTree = "<group>"; };
 		0A5E58672970C54C00F67382 /* CustomTextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextEditor.swift; sourceTree = "<group>"; };
+		0A5E58692970EA9C00F67382 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		0A7E87EB296AB93900EC776B /* FeedScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedScreen.swift; sourceTree = "<group>"; };
 		0A7E87ED296ABB4300EC776B /* FeedScreenIosVm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedScreenIosVm.swift; sourceTree = "<group>"; };
 		0A8AA892296CED78006583EB /* SelectLocationScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectLocationScreen.swift; sourceTree = "<group>"; };
@@ -72,6 +74,7 @@
 			isa = PBXGroup;
 			children = (
 				0A5E58672970C54C00F67382 /* CustomTextEditor.swift */,
+				0A5E58692970EA9C00F67382 /* ImagePicker.swift */,
 			);
 			path = components;
 			sourceTree = "<group>";
@@ -132,6 +135,13 @@
 			path = components;
 			sourceTree = "<group>";
 		};
+		0ACA0C382971160D008C01AF /* components */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = components;
+			sourceTree = "<group>";
+		};
 		0AD43743296EFE5700750B15 /* components */ = {
 			isa = PBXGroup;
 			children = (
@@ -169,6 +179,7 @@
 		7555FF7D242A565900829871 /* iosApp */ = {
 			isa = PBXGroup;
 			children = (
+				0ACA0C382971160D008C01AF /* components */,
 				0A8AA890296CEC3C006583EB /* feature_add_buddy */,
 				0A7E87E9296AB8D300EC776B /* feature_feed */,
 				058557BA273AAA24004C7B11 /* Assets.xcassets */,
@@ -329,6 +340,7 @@
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
 				0A7E87EC296AB93900EC776B /* FeedScreen.swift in Sources */,
 				0A8AA893296CED78006583EB /* SelectLocationScreen.swift in Sources */,
+				0A5E586A2970EA9C00F67382 /* ImagePicker.swift in Sources */,
 				0AD43746296EFE7500750B15 /* BuddyItemCard.swift in Sources */,
 				0A8AA898296CEE11006583EB /* AddBuddyScreeen.swift in Sources */,
 				0ABC8223296E55C900217535 /* GoogleMapView.swift in Sources */,

@@ -1,4 +1,5 @@
 PODS:
+  - AwaitToast (1.2.0)
   - GoogleMaps (7.2.0):
     - GoogleMaps/Maps (= 7.2.0)
   - GoogleMaps/Base (7.2.0)
@@ -13,6 +14,7 @@ PODS:
   - UIPilot (2.0.2)
 
 DEPENDENCIES:
+  - AwaitToast
   - GoogleMaps (= 7.2.0)
   - SDWebImageSwiftUI
   - shared (from `../shared`)
@@ -20,6 +22,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
+    - AwaitToast
     - GoogleMaps
     - SDWebImage
     - SDWebImageSwiftUI
@@ -30,12 +33,13 @@ EXTERNAL SOURCES:
     :path: "../shared"
 
 SPEC CHECKSUMS:
+  AwaitToast: 87bbcebcec9b45f530c88e3f38ef0d247f888705
   GoogleMaps: 65ce5426e2398bb81433c8076f2ab6419c2c5537
   SDWebImage: 9c36e66c8ce4620b41a7407698dda44211a96764
   SDWebImageSwiftUI: 54ded4115b4ac6cd60b78f61415f86d070892d98
   shared: 2d3b24a8fe27b7d9e65b8d075a9672fbc6a1aa10
   UIPilot: dec727d11749dcb34654df4f8c94b98b29903566
 
-PODFILE CHECKSUM: f397a00e051231e23c02ed72b650f3a7dd9f36ce
+PODFILE CHECKSUM: 1fb6547cfaccc678718694bc2202db267627d073
 
 COCOAPODS: 1.10.1

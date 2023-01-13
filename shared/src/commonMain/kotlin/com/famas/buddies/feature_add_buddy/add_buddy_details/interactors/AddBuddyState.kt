@@ -15,5 +15,5 @@ data class AddBuddyState(
 
 
 enum class Gender(val id: Char) {
-    Male('M'), Female('F'), Other('O')
+    Male('M'), Female('F'), Other('O'), Select('s')
 }

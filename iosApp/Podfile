@@ -7,4 +7,5 @@ target 'iosApp' do
   pod 'GoogleMaps', '7.2.0'
   pod 'UIPilot', '~> 2.0.2'
   pod 'SDWebImageSwiftUI'
+  pod 'AwaitToast'
 end

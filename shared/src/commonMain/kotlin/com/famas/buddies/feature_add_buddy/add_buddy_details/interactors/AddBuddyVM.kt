@@ -31,7 +31,7 @@ class AddBuddyVM(
                 _state.value = state.value.copy(name = event.text)
             }
             is AddBuddyEvent.OnAddFiles -> {
-                _state.value = state.value.copy(files = state.value.files.plus(event.files))
+                _state.value = state.value.copy(files = state.value.files.plus(event.files.filterNotNull()))
             }
             is AddBuddyEvent.OnRemoveFile -> {
                 _state.value =
