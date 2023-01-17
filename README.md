@@ -11,6 +11,7 @@ Buddies is a Kotlin multiplatform mobile application which allows the user to po
 - IOS (swift ui)
 - MVVM architecture
 - Shared viewmodel and shared DI
+- Ktor(rest api)
 
 ## Running the app
 * Please Make sure you have KMM plugin installed in your android studio.
